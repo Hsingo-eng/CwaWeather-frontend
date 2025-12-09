@@ -16,15 +16,26 @@
 
     <style>
         :root {
-            --ac-green: #7DE1A9;
-            --ac-bg-pattern: #8FD8AF;
-            --ac-cream: #FFFEF2;
-            --ac-yellow: #F9F195;
-            --ac-brown: #796452;
-            --ac-blue: #4FB5D9;
-            --ac-dark: #58504A;
-            --ac-card-border: #E6E0C8;
+            /* 美國隊長核心三色 */
+            --cap-dark-blue: #002366;   /* 深海軍藍 (背景基底) */
+            --cap-bright-blue: #004BAA; /* 亮藍色 (漸層用) */
+            --cap-red: #B71212;         /* 猩紅色 (強調) */
+            --cap-white: #F0F0F0;       /* 銀白色/金屬白 (文字與邊框) */
+            --cap-metal: #AFAFAF;       /* 中性金屬灰 (次要元素) */
+
+            
+            
+            --ac-green: var(--cap-dark-blue);   /* 背景深藍 */
+            --ac-bg-pattern: var(--cap-bright-blue);
+            --ac-cream: #FFFFFF;                /* 卡片背景白色 */
+            --ac-yellow: var(--cap-red);        /* 藥丸紅色 */
+            --ac-brown: var(--cap-dark-blue);   /* 深藍色文字 */
+            --ac-blue: var(--cap-bright-blue);  /* 亮藍氣泡*/
+            --ac-dark: #333333;
+            /* 卡片邊框銀白色金屬質感 */
+            --ac-card-border: var(--cap-white);
         }
+        
 
         * {
             margin: 0;
@@ -35,16 +46,20 @@
 
         body {
             font-family: 'Zen Maru Gothic', sans-serif;
-            background-color: var(--ac-green);
-            /* 更細緻的斜紋背景 */
-            background-image:
-                repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255, 255, 255, 0.2) 20px, rgba(255, 255, 255, 0.2) 40px);
+            /* 基底顏色 */
+            background-color: var(--cap-dark-blue);
+
+            /* 美國隊長風格：放射狀漸層背景 */
+            /* 從中間的亮藍色向外擴散到深藍色，營造金屬光澤感 */
+            background-image: radial-gradient(circle at center top, var(--cap-bright-blue) 20%, var(--cap-dark-blue) 80%);
+
             min-height: 100vh;
             color: var(--ac-dark);
             /* 防止 iOS 左右滑動 */
             overflow-x: hidden;
             padding-bottom: 20px;
-        }
+            }
+        
 
         /* 頂部狀態列 */
         .status-bar {
@@ -92,8 +107,8 @@
             border-radius: 35px;
             padding: 30px 25px;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            border: 4px solid white;
+            box-shadow: 0 10px 25px rgba(0, 35, 102, 0.5);
+            border: 5px solid var(--cap-white);
             margin-bottom: 25px;
             position: relative;
         }
@@ -222,7 +237,7 @@
             border-radius: 25px;
             padding: 20px 15px;
             text-align: center;
-            border: 3px solid white;
+            border: 4px solid var(--cap-white);
             flex-shrink: 0;
             /* 防止被擠壓 */
         }
